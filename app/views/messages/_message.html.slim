@@ -8,7 +8,7 @@
       = message.hours
     - if message.mentioned?
       .message-body.mentioned
-        = message.body
+        = emojify(message.body)
     - else
       .message-body
-        = simple_format(message.body).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe
+        = simple_format(emojify(message.body)).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe

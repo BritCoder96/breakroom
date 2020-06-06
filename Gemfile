@@ -18,7 +18,7 @@ gem 'slim-rails'
 
 gem 'redis', '~> 4.1'
 
-gem 'gemoji', '~> 3.0.1'
+gem 'gemoji', '~> 4.0.0.rc2'
 
 gem 'turbolinks', '~> 5.2.0'
 
