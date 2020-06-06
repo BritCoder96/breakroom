@@ -6,221 +6,219 @@
 */
 
 .list-content {
-  width: 240px;
-  background: #011C28;
-  color: white;
-  height: 100%;
+    width: 240px;
+    background: #011C28;
+    color: white;
+    height: 100%;
 }
 
 .application-name {
-  width: calc(100% - 40px);
-  padding: 20px;
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-  background: rgba(65, 82, 172,.4);
+    width: calc(100% - 40px);
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    background: rgba(65, 82, 172,.4);
 }
 
 .profile-tab {
-  font-size: 13px;
-  position: absolute;
-  bottom: 0;
-  width: 244px;
-  background: rgba(255,255,255,.05);
-
-  h3 {
-    font-weight: bold;
-    text-transform: uppercase;
-    margin: 0;
-    font-size: 11px;
-    color: rgba(255,255,255,.3);
+    font-size: 13px;
+    position: absolute;
+    bottom: 0;
+    width: 244px;
     background: rgba(255,255,255,.05);
-    padding: 10px 20px;
-    width: calc(100% - 40px);
-  }
-  display:inline-block;
 
+    h3 {
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 0;
+        font-size: 11px;
+        color: rgba(255,255,255,.3);
+        background: rgba(255,255,255,.05);
+        padding: 10px 20px;
+        width: calc(100% - 40px);
+    }
+    display:inline-block;
 }
 
 .edit-profile-btn {
-  text-align: right;
-  padding: 2px 5px;
-  background: rgba(0,0,0,0.4);
-  color: white;
-  display: inline;
-  position: relative;
-  top: -25px;
-  left: 190px;
-  font-weight: bold;
-  font-size: 12px;
-  border-radius: 3px;
-
-  a {
+    text-align: right;
+    padding: 2px 5px;
+    background: rgba(0,0,0,0.4);
     color: white;
-    text-decoration: none;
-  }
+    display: inline;
+    position: relative;
+    top: -25px;
+    left: 190px;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 3px;
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
 }
 
 .channel-tab {
-  width: calc(100% - 40px);
+    width: calc(100% - 40px);
 
-  h3 {
-    font-weight: bold;
-    text-transform: uppercase;
-    margin: 0;
-    padding: 0;
-    font-size: 11px;
-    background: rgba(255,255,255,.05);
-    color: rgba(255,255,255,.3);
-    padding: 10px 20px;
-    width: 100%;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
-    li {
-      padding: 0;
-      margin: 0;
-      color: rgba(255,255,255, .2);
-      text-transform: lowercase;
-      font-weight: bold;
-      font-size: 13px;
-      padding: 3px 0;
-      padding-left: 20px;
-
-      a {
-        text-decoration: inherit;
-        color: rgba(255,255,255,.4);
-      }
+    h3 {
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 0;
+        padding: 0;
+        font-size: 11px;
+        background: rgba(255,255,255,.05);
+        color: rgba(255,255,255,.3);
+        padding: 10px 20px;
+        width: 100%;
     }
-  }
 
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            padding: 0;
+            margin: 0;
+            color: rgba(255,255,255, .2);
+            text-transform: lowercase;
+            font-weight: bold;
+            font-size: 13px;
+            padding: 3px 0;
+            padding-left: 20px;
+
+            a {
+                text-decoration: inherit;
+                color: rgba(255,255,255,.4);
+            }
+        }
+    }
 }
 
 
 .btn-tab {
-  font-size: 11px;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: white;
-  background: rgba(255,255,255,.1);
-  border-radius: 5px;
-  margin: 0px 20px;
-  margin-top: 7px;
-  display: inline-block;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    background: rgba(255,255,255,.1);
+    border-radius: 5px;
+    margin: 0px 20px;
+    margin-top: 7px;
+    display: inline-block;
 
-  text-align: center;
-  padding: 4px 8px;
-  cursor: pointer;
-  box-shadow: 0 3px 0 0 rgba(255,255,255,0.13);
+    text-align: center;
+    padding: 4px 8px;
+    cursor: pointer;
+    box-shadow: 0 3px 0 0 rgba(255,255,255,0.13);
 
-  &:active {
-    position: relative;
-    top: 2px;
-    box-shadow: 0 1px 0 0 rgba(0,0,0,0.5);
-  }
+    &:active {
+        position: relative;
+        top: 2px;
+        box-shadow: 0 1px 0 0 rgba(0,0,0,0.5);
+    }
 
-  &:hover {
-    background: rgba(255,255,255,0.3)
-  }
+    &:hover {
+        background: rgba(255,255,255,0.3)
+    }
 
-  a {
-    color: inherit;
-    text-decoration: inherit;
-  }
+    a {
+        color: inherit;
+        text-decoration: inherit;
+    }
 }
 
 .profile-info-container {
-  display: flex;
-  margin-left: 20px;
-  margin-top: 0px;
-  margin-bottom: 15px;
+    display: flex;
+    margin-left: 20px;
+    margin-top: 0px;
+    margin-bottom: 15px;
 
-  .profile-avatar img {
-    border-radius: 5px;
-    width: 35px;
-  }
-
-  .profile-name {
-    margin-top: 4px;
-    font-weight: bold;
-    font-weight: 12px;
-    text-transform: capitalize;
-    margin-left: 10px;
-
-    .profile-email {
-      text-transform: lowercase;
-      font-size: 10px;
-      color:rgba(255,255,255,0.4)
+    .profile-avatar img {
+        border-radius: 5px;
+        width: 35px;
     }
-  }
+
+    .profile-name {
+        margin-top: 4px;
+        font-weight: bold;
+        font-weight: 12px;
+        text-transform: capitalize;
+        margin-left: 10px;
+
+        .profile-email {
+            text-transform: lowercase;
+            font-size: 10px;
+            color:rgba(255,255,255,0.4)
+        }
+    }
 }
 
 .themename {
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
-  margin-top: 10px;
-  padding: 10px 20px;
-  padding-bottom: 5px;
-  width: 100%;
-
-  a {
-    color: white;
-    float:right;
-    text-align: right;
-    text-decoration: none;
-    font-size: 8px;
-    background: rgb(170, 46, 46);
-    padding: 2px 4px 2px 0px;
+    font-size: 12px;
     font-weight: 900;
-    border-radius: 100px;
-    width: 10px;
-    height: 10px;
-  }
+    text-transform: uppercase;
+    margin-top: 10px;
+    padding: 10px 20px;
+    padding-bottom: 5px;
+    width: 100%;
+
+    a {
+        color: white;
+        float:right;
+        text-align: right;
+        text-decoration: none;
+        font-size: 8px;
+        background: rgb(170, 46, 46);
+        padding: 2px 4px 2px 0px;
+        font-weight: 900;
+        border-radius: 100px;
+        width: 10px;
+        height: 10px;
+    }
 }
 
 .admin-tab {
-  font-weight: bold;
-  text-transform: uppercase;
-  height: 17px;
-  font-size: 11px;
-  background: rgba(86, 187, 151, 0.4);
-  color: rgba(255,255,255,.5);
-  padding: 10px 20px;
-  width: calc(100% - 44px);
+    font-weight: bold;
+    text-transform: uppercase;
+    height: 17px;
+    font-size: 11px;
+    background: rgba(86, 187, 151, 0.4);
+    color: rgba(255,255,255,.5);
+    padding: 10px 20px;
+    width: calc(100% - 44px);
 
-  a {
-    color: white;
-    text-decoration: none;
-  }
+    a {
+        color: white;
+        text-decoration: none;
+    }
 
-  &:hover {
-    cursor: pointer;
-    background: rgba(86, 187, 151, 0.5);
-  }
+    &:hover {
+        cursor: pointer;
+        background: rgba(86, 187, 151, 0.5);
+    }
 }
 
 .admin-active {
-  height: 80px;
+    height: 80px;
 }
 
 .logout {
-  width: 24px;
-  height: 24px;
-  display: inline-block;
-  position: absolute;
-  right: 20px;
-  top: 55px;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    top: 55px;
 }
 
 
 .admin-submenu {
-  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2);
-  border-radius: 3px;
-  background: white;
-  color: black;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2);
+    border-radius: 3px;
+    background: white;
+    color: black;
 }
