@@ -1,0 +1,22 @@
+<div class="message">
+	<div class="avatar">
+		<%= gravatar_for message.user %>
+	</div>
+	<div class="message-information">
+		<div class="author">
+			<%= message.user.name %>
+		</div>
+		<div class="timestamp">
+			<%= message.hours %>
+		</div>
+		<% if message.mentioned? %>
+			<div class="message-body mentioned">
+				<%= emojify(message.body) %>
+			</div>
+		<% else %>
+			<div class="message-body">
+				<%= simple_format(emojify(message.body)).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+			</div>
+		<% end %>
+	</div>
+</div>

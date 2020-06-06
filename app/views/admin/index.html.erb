@@ -1,0 +1,24 @@
+<div class="usermodal">
+	<h1>User database</h1>
+	<p>Manage your users here.</p>
+	<div class="user-row">
+		<div class="column top">Nickname</div>
+		<div class="column top">First name</div>
+		<div class="column top">Last name</div>
+		<div class="column top">Admin?</div>
+		<div class="column top">Email</div>
+		<div class="column top">Actions</div>
+	</div>
+	<% @users.each do |user| %>
+		<div class="user-row">
+			<div class="column"><%= user.nickname %></div>
+			<div class="column"><%= user.firstname %></div>
+			<div class="column"><%= user.lastname %></div>
+			<div class="column"><%= user.admin %></div>
+			<div class="column"><%= user.email %></div>
+			<div class="column">
+				<%= link_to "Destroy", admin_destroy_user_path(user), method: :delete, data: { confirm: "You sure?" } %>
+			</div>
+		</div>
+	<% end %>
+</div>
