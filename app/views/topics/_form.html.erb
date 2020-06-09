@@ -1,11 +1,11 @@
-<%= form_for @chat_room do |f| %>
+<%= form_for @topic do |f| %>
     <div class="form-group">
         <%= f.label :title %>
-        <%= f.text_field :title, autofocus: true, class: 'form-control', id: "chatroom_title" %>
+        <%= f.text_field :title, autofocus: true, class: 'form-control', id: "topic_title" %>
     </div>
     <div class="form-group">
         <%= f.label :description %>
-        <%= f.text_field :description, autofocus: true, class: 'form-control', id: "chatroom_description" %>
+        <%= f.text_field :description, autofocus: true, class: 'form-control', id: "topic_description" %>
     </div>
     <%= f.collection_check_boxes(:theme_ids, Theme.all, :id, :name) do |b| %>
         <div class="form-group">
