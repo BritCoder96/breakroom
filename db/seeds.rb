@@ -15,8 +15,8 @@ theme2 = Theme.create(name:"Sports")
 theme3 = Theme.create(name:"TV Shows")
 theme4 = Theme.create(name:"Movies")
 
-sam = User.create(nickname: "UniqueNL", firstname: "Sam", lastname: "Taal", email:"samtaal@outlook.com", password: "samsam", admin: true)
-codaisseur = User.create(nickname: "Codaisseur", firstname: "Testing", lastname: "Admin", email:"test@codaisseur.com", password: "codaisseur", admin: true)
+scott = User.create(nickname: "sbenson", firstname: "Scott", lastname: "Benson", email:"scott.benson96@gmail.com", password: "password1234", admin: true)
+janna = User.create(nickname: "jpierre", firstname: "Janna", lastname: "Pierre", email:"jannapierre@gmail.com", password: "password1234", admin: true)
 bryan = User.create(nickname: "bbenson", firstname: "Bryan", lastname: "Benson", email:"bryanbenson83@gmail.com", password: "password1234", admin: true)
 
 topNews = Topic.create(title:"Top News", description: "Top news.", user: bryan)
