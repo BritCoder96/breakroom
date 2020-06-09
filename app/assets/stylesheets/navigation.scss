@@ -15,10 +15,26 @@
 .application-name {
     width: calc(100% - 40px);
     padding: 20px;
+    color: white;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
     background: rgba(65, 82, 172,.4);
+
+    a {
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: white;
+        text-decoration: none;
+    }
+    
+    a:visited {
+        color: white;
+        text-decoration: none;
+    }
+
 }
 
 .profile-tab {
