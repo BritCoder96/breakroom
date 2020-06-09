@@ -10,18 +10,25 @@ Topic.destroy_all
 Theme.destroy_all
 User.destroy_all
 
-theme1 = Theme.create(name:"General")
-theme2 = Theme.create(name:"Development")
-theme3 = Theme.create(name:"Design")
-theme4 = Theme.create(name:"Marketing")
-
-general = Topic.create(themes: [theme1], title:"general", description: "Chit-chat about general stuff.")
-random = Topic.create(themes: [theme1], title:"random", description: "Random posts about kittens and .. stuff..")
-events = Topic.create(themes: [theme1], title:"events", description: "Keep up with the latest events.")
-issues = Topic.create(themes: [theme2], title:"issues", description: "Fight with someone if he fucked up merging.")
-seochat = Topic.create(themes: [theme4], title:"seo-chat", description: "Marketing? Lame!")
-inspiration = Topic.create(themes: [theme3], title:"inspiration", description: "That's interesting...")
+theme1 = Theme.create(name:"News")
+theme2 = Theme.create(name:"Sports")
+theme3 = Theme.create(name:"TV Shows")
+theme4 = Theme.create(name:"Movies")
 
 sam = User.create(nickname: "UniqueNL", firstname: "Sam", lastname: "Taal", email:"samtaal@outlook.com", password: "samsam", admin: true)
 codaisseur = User.create(nickname: "Codaisseur", firstname: "Testing", lastname: "Admin", email:"test@codaisseur.com", password: "codaisseur", admin: true)
-codaisseur = User.create(nickname: "bbenson", firstname: "Bryan", lastname: "Benson", email:"bryanbenson83@gmail.com", password: "password1234", admin: true)
+bryan = User.create(nickname: "bbenson", firstname: "Bryan", lastname: "Benson", email:"bryanbenson83@gmail.com", password: "password1234", admin: true)
+
+topNews = Topic.create(title:"Top News", description: "Top news.", user: bryan)
+theme1.topics << topNews
+theme1.save
+topSports = Topic.create(title:"Top Sports", description: "Top Sports", user: bryan)
+theme2.topics << topSports
+theme2.save
+topTV = Topic.create(title:"Top TV", description: "Top TV Shows.", user: bryan)
+theme3.topics << topTV
+theme3.save
+topMovies = Topic.create(title:"Top Movies", description: "Top Movies", user: bryan)
+theme4.topics << topMovies
+theme4.save
+
