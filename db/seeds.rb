@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Message.destroy_all
-ChatRoom.destroy_all
+Topic.destroy_all
 Theme.destroy_all
 User.destroy_all
 
@@ -15,12 +15,12 @@ theme2 = Theme.create(name:"Development")
 theme3 = Theme.create(name:"Design")
 theme4 = Theme.create(name:"Marketing")
 
-general = ChatRoom.create(themes: [theme1], title:"general", description: "Chit-chat about general stuff.")
-random = ChatRoom.create(themes: [theme1], title:"random", description: "Random posts about kittens and .. stuff..")
-events = ChatRoom.create(themes: [theme1], title:"events", description: "Keep up with the latest events.")
-issues = ChatRoom.create(themes: [theme2], title:"issues", description: "Fight with someone if he fucked up merging.")
-seochat = ChatRoom.create(themes: [theme4], title:"seo-chat", description: "Marketing? Lame!")
-inspiration = ChatRoom.create(themes: [theme3], title:"inspiration", description: "That's interesting...")
+general = Topic.create(themes: [theme1], title:"general", description: "Chit-chat about general stuff.")
+random = Topic.create(themes: [theme1], title:"random", description: "Random posts about kittens and .. stuff..")
+events = Topic.create(themes: [theme1], title:"events", description: "Keep up with the latest events.")
+issues = Topic.create(themes: [theme2], title:"issues", description: "Fight with someone if he fucked up merging.")
+seochat = Topic.create(themes: [theme4], title:"seo-chat", description: "Marketing? Lame!")
+inspiration = Topic.create(themes: [theme3], title:"inspiration", description: "That's interesting...")
 
 sam = User.create(nickname: "UniqueNL", firstname: "Sam", lastname: "Taal", email:"samtaal@outlook.com", password: "samsam", admin: true)
 codaisseur = User.create(nickname: "Codaisseur", firstname: "Testing", lastname: "Admin", email:"test@codaisseur.com", password: "codaisseur", admin: true)

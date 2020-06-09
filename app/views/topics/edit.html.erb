@@ -1,6 +1,7 @@
 <div class="usermodal">
     <% if current_user && current_user.is_admin? %>
-        <h1>Add chat room</h1>
+        <h1>Edit topic</h1>
+
         <%= render 'form' %>
     <% else %>
         <% controller.redirect_to root_path %>

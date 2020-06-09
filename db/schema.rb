@@ -15,29 +15,13 @@ ActiveRecord::Schema.define(version: 2016_11_17_155108) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "chat_rooms", id: :serial, force: :cascade do |t|
-    t.string "title"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "description"
-    t.index ["user_id"], name: "index_chat_rooms_on_user_id"
-  end
-
-  create_table "chat_rooms_themes", id: :serial, force: :cascade do |t|
-    t.integer "chat_room_id"
-    t.integer "theme_id"
-    t.index ["chat_room_id"], name: "index_chat_rooms_themes_on_chat_room_id"
-    t.index ["theme_id"], name: "index_chat_rooms_themes_on_theme_id"
-  end
-
   create_table "messages", id: :serial, force: :cascade do |t|
     t.text "body"
     t.integer "user_id"
-    t.integer "chat_room_id"
+    t.integer "topic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.index ["topic_id"], name: "index_messages_on_topic_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -45,6 +29,22 @@ ActiveRecord::Schema.define(version: 2016_11_17_155108) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "themes_topics", id: :serial, force: :cascade do |t|
+    t.integer "topic_id"
+    t.integer "theme_id"
+    t.index ["theme_id"], name: "index_themes_topics_on_theme_id"
+    t.index ["topic_id"], name: "index_themes_topics_on_topic_id"
+  end
+
+  create_table "topics", id: :serial, force: :cascade do |t|
+    t.string "title"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "description"
+    t.index ["user_id"], name: "index_topics_on_user_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2016_11_17_155108) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "chat_rooms", "users"
-  add_foreign_key "messages", "chat_rooms"
+  add_foreign_key "messages", "topics"
   add_foreign_key "messages", "users"
+  add_foreign_key "topics", "users"
 end

@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     before_action :authenticate_user!
-    before_action :chatrooms
+    before_action :topics
 
-    def chatrooms
-       @chat_rooms = ChatRoom.all
+    def topics
+       @topics = Topic.all
        @themes = Theme.all
     end
 end
