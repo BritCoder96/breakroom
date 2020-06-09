@@ -5,9 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Theme.delete_all
-ChatRoom.delete_all
-User.delete_all
+Message.destroy_all
+ChatRoom.destroy_all
+Theme.destroy_all
+User.destroy_all
 
 theme1 = Theme.create(name:"General")
 theme2 = Theme.create(name:"Development")
@@ -23,3 +24,4 @@ inspiration = ChatRoom.create(themes: [theme3], title:"inspiration", description
 
 sam = User.create(nickname: "UniqueNL", firstname: "Sam", lastname: "Taal", email:"samtaal@outlook.com", password: "samsam", admin: true)
 codaisseur = User.create(nickname: "Codaisseur", firstname: "Testing", lastname: "Admin", email:"test@codaisseur.com", password: "codaisseur", admin: true)
+codaisseur = User.create(nickname: "bbenson", firstname: "Bryan", lastname: "Benson", email:"bryanbenson83@gmail.com", password: "password1234", admin: true)

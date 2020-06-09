@@ -21,7 +21,8 @@ class ChatRoomsController < ApplicationController
             flash[:success] = 'Chat room added!'
             redirect_to chat_rooms_path
         else
-          render 'new'
+            flash.now[:error] = @chat_room.errors.map{|e,m|e.to_s.humanize.to_s + " " + m}
+            render 'new'
         end
     end
 

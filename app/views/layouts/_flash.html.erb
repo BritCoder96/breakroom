@@ -1,0 +1,81 @@
+<% if !flash.now.nil? && !flash.now[:error].blank? %>
+	<div class="alert alert-danger">
+		<% if flash.now[:error].is_a? Array %>
+			<% flash.now[:error].each do |msg| %>
+				<p><%= msg.html_safe %></p>
+			<% end %>
+		<% else %>
+			<p><%= flash.now[:error].html_safe %></p>
+		<% end %>
+	</div>
+	<% elsif !flash.now.nil? && !flash.now[:notice].blank? %>
+	<div class="alert alert-success">
+		<% if flash.now[:notice].is_a? Array %>
+			<% flash.now[:notice].each do |msg| %>
+				<p><%= msg.html_safe %></p>
+			<% end %>
+		<% else %>
+			<p><%= flash.now[:notice].html_safe %></p>
+		<% end %>
+	</div>
+	<% elsif !flash.now.nil? && !flash.now[:warning].blank? %>
+	<div class="alert alert-warning">
+		<% if flash.now[:warning].is_a? Array %>
+			<% flash.now[:warning].each do |msg| %>
+				<p><%= msg.html_safe %></p>
+			<% end %>
+		<% else %>
+			<p><%= flash.now[:warning].html_safe %></p>
+		<% end %>
+	</div>
+	<% elsif !flash.now.nil? && !flash.now[:alert].blank? %>
+	<div class="alert alert-warning">
+		<% if flash.now[:alert].is_a? Array %>
+			<% flash.now[:alert].each do |msg| %>
+				<p><%= msg.html_safe %></p>
+			<% end %>
+		<% else %>
+			<p><%= flash.now[:alert].html_safe %></p>
+		<% end %>
+	</div>
+	<% elsif !flash[:error].blank? %>
+	<div class="alert alert-danger">
+		<% if flash[:error].is_a? Array %>
+			<% flash[:error].each do |msg| %>
+				<p><%= msg.html_safe %></p>
+			<% end %>
+		<% else %>
+			<p><%= flash[:error].html_safe %></p>
+		<% end %>
+	</div>
+	<% elsif !flash[:notice].blank? %>
+	<div class="alert alert-success">
+		<% if flash[:notice].is_a? Array %>
+			<% flash[:notice].each do |msg| %>
+				<p><%= msg.html_safe %></p>
+			<% end %>
+		<% else %>
+			<p><%= flash[:notice].html_safe %></p>
+		<% end %>
+	</div>
+	<% elsif !flash[:warning].blank? %>
+	<div class="alert alert-warning">
+		<% if flash[:warning].is_a? Array %>
+			<% flash[:warning].each do |msg| %>
+				<p><%= msg.html_safe %></p>
+			<% end %>
+		<% else %>
+			<p><%= flash[:warning].html_safe %></p>
+		<% end %>
+	</div>
+	<% elsif !flash[:alert].blank? %>
+	<div class="alert alert-warning">
+		<% if flash[:alert].is_a? Array %>
+			<% flash[:alert].each do |msg| %>
+				<p><%= msg.html_safe %></p>
+			<% end %>
+		<% else %>
+			<p><%= flash[:alert].html_safe %></p>
+		<% end %>
+	</div>
+<% end %>
