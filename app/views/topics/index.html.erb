@@ -1,7 +1,15 @@
 <div class="usermodal">
+	<%= button_to 'Add Topic', new_topic_path, remote: true, method: :get, class: 'btn btn-primary btn-block mb-5' %>
 	<h1>Welcome to Breakroom!</h1>
 	<p>You are currently at the homepage. Please choose a channel to chat with others!</p>
 	<p>You can also create channels to organize your chat even more efficient!</p>
 	<br/>
 	<p>This project is made to learn more about ActionCable.</p>
+</div>
+
+<div class='modal' id='AddTopicModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+        </div>
+    </div>
 </div>
