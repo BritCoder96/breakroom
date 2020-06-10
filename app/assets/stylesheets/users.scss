@@ -5,14 +5,19 @@
 }
 
 .usermodal {
-    background: white;
+    background: rgba(65, 82, 172, 0.4);
     border-radius: 5px;
     padding: 20px;
 
     h1 {
         margin: 0;
         padding: 0;
+        text-align: center;
     }
+}
+
+.topicButtons{
+  text-align: center;
 }
 
 .guestmodal {
