@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2016_11_17_155108) do
+ActiveRecord::Schema.define(version: 2020_06_10_203837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(version: 2016_11_17_155108) do
     t.datetime "updated_at", null: false
     t.index ["topic_id"], name: "index_messages_on_topic_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "name"
+    t.integer "annual_sales_value"
+    t.string "industry_type"
   end
 
   create_table "themes", id: :serial, force: :cascade do |t|
@@ -64,7 +70,9 @@ ActiveRecord::Schema.define(version: 2016_11_17_155108) do
     t.string "firstname"
     t.string "lastname"
     t.boolean "admin"
+    t.bigint "organization_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["organization_id"], name: "index_users_on_organization_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
