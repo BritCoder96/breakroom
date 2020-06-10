@@ -8,7 +8,7 @@ jQuery(document).on('turbolinks:load', function() {
         messages_to_bottom();
         App.global_chat = App.cable.subscriptions.create({
             channel: "TopicsChannel",
-            topic_id: messages.data('topics-id')
+            topic_id: messages.data('topic-id')
         }, {
             connected: function() {},
             disconnected: function() {},
@@ -28,7 +28,7 @@ jQuery(document).on('turbolinks:load', function() {
             $this = $(this);
             textarea = $this.find('#message_body');
             if ($.trim(textarea.val()).length > 1) {
-              App.global_chat.send_message(textarea.val(), messages.data('topics-id'));
+              App.global_chat.send_message(textarea.val(), messages.data('topic-id'));
               textarea.val('');
             }
             e.preventDefault();
