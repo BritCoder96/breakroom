@@ -28,7 +28,7 @@ jQuery(document).on('turbolinks:load', function() {
             $this = $(this);
             textarea = $this.find('#message_body');
             if ($.trim(textarea.val()).length > 1) {
-              App.global_chat.send_message(textarea.val(), messages.data('topics-id'));
+              App.global_chat.send_message(textarea.val(), messages.data('topic-id'));
               textarea.val('');
             }
             e.preventDefault();
