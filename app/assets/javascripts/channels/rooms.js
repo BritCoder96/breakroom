@@ -8,7 +8,7 @@ jQuery(document).on('turbolinks:load', function() {
         messages_to_bottom();
         App.global_chat = App.cable.subscriptions.create({
             channel: "TopicsChannel",
-            topic_id: messages.data('topic-id')
+            topic_id: messages.data('topics-id')
         }, {
             connected: function() {},
             disconnected: function() {},
