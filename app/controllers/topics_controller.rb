@@ -1,8 +1,13 @@
 class TopicsController < ApplicationController
     before_action :authenticate_user!
+    before_action :set_page, only: [:index]
+    QUESTIONS_PER_PAGE = 10
 
     def index
-        @themes = Theme.where(organization_id: [current_user.organization_id, nil]).includes(:topics).load
+        @topics = Topic.all
+        all_themes = Theme.where(organization_id: [current_user.organization_id, nil]).includes(:topics)
+        @display_next = all_themes.count > QUESTIONS_PER_PAGE * (@page + 1)
+        @theme_filters = all_themes.offset(QUESTIONS_PER_PAGE * @page).limit(QUESTIONS_PER_PAGE).load
     end
 
     def new
@@ -12,7 +17,7 @@ class TopicsController < ApplicationController
     def show
         @topic = Topic.includes(:messages).find_by(id: params[:id])
         @message = Message.new
-        @themes = Theme.where(organization_id: [current_user.organization_id, nil]).includes(:topics).load
+        @topics = Topic.all
     end
 
     def create
@@ -21,7 +26,7 @@ class TopicsController < ApplicationController
             flash[:notice] = 'Topic added!'
             redirect_to topics_path
         else
-            flash[:error] = @topic.errors.map{|e,m|e.to_s.humanize.to_s + " " + m}
+            flash.now[:error] = @topic.errors.map{|e,m|e.to_s.humanize.to_s + " " + m}
             respond_to do |format|
                 format.js { render 'topics/create'}
             end
@@ -44,7 +49,7 @@ class TopicsController < ApplicationController
 
     def destroy
         @topic = Topic.find(params[:id]).destroy
-        flash[:notice] = "User deleted"
+        flash[:notice] = "Topic deleted"
         redirect_to root_path
     end
 
@@ -52,5 +57,9 @@ class TopicsController < ApplicationController
 
     def topic_params
         params.require(:topic).permit(:title, :description, :theme_id)
+    end
+
+    def set_page
+        @page = (params[:page] || 0).to_i
     end
 end

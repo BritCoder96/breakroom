@@ -1,10 +1,23 @@
 <div class="usermodal">
-	<%= button_to 'Add Topic', new_topic_path, remote: true, method: :get, class: 'btn btn-primary btn-block mb-5' %>
-	<h1>Welcome to Breakroom!</h1>
-	<p>You are currently at the homepage. Please choose a channel to chat with others!</p>
-	<p>You can also create channels to organize your chat even more efficient!</p>
+	<h1>Breakroom</h1>
 	<br/>
-	<p>This project is made to learn more about ActionCable.</p>
+	<div class= "container">
+		<div class="btn-group btn-group-justified">
+			<% if @page > 0 %>
+				<%= link_to "&larr; ".html_safe, topics_path(page: @page - 1), class: 'mr-2' %>
+			<% end %>
+			<div class="topicButtons">
+					<% @theme_filters.each do |theme| %>
+						<button class='btn btn-primary'><%= theme.name %></button>
+					<% end %>
+			</div>
+			<% if @display_next %>
+				<%= link_to "&rarr;".html_safe, topics_path(page: @page + 1), class: 'ml-2' %>
+			<% end %> 
+		</div>
+	</div>
+
+	<%= button_to 'Add Topic', new_topic_path, remote: true, method: :get, class: 'btn btn-primary btn-block mb-5' %>
 </div>
 
 <div class='modal' id='AddTopicModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
