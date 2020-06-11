@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_10_203837) do
+ActiveRecord::Schema.define(version: 2020_06_11_200939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 2020_06_10_203837) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "organization_id"
+    t.index ["organization_id"], name: "index_themes_on_organization_id"
   end
 
   create_table "themes_topics", id: :serial, force: :cascade do |t|
@@ -50,6 +52,8 @@ ActiveRecord::Schema.define(version: 2020_06_10_203837) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
+    t.bigint "theme_id"
+    t.index ["theme_id"], name: "index_topics_on_theme_id"
     t.index ["user_id"], name: "index_topics_on_user_id"
   end
 
@@ -78,5 +82,7 @@ ActiveRecord::Schema.define(version: 2020_06_10_203837) do
 
   add_foreign_key "messages", "topics"
   add_foreign_key "messages", "users"
+  add_foreign_key "themes", "organizations"
+  add_foreign_key "topics", "themes"
   add_foreign_key "topics", "users"
 end

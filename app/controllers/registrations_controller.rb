@@ -2,8 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
     before_action :topics
 
     def topics
-        @topics = Topic.all
-        @themes = Theme.all
+        @themes = Theme.where(organization_id: [current_user.organization_id, nil]).includes(:topics).load
     end
 
     private

@@ -1,24 +1,24 @@
 <div class="usermodal">
-		<h1>Breakroom</h1>
-		<br/>
-	</div>
+	<h1>Breakroom</h1>
+	<br/>
 	<div class= "container">
-	<div class="btn-group btn-group-justified">
-			<%= link_to_if @page > 0, "&larr; ".html_safe, topics_path(page: @page - 1) %>
-
-		<div class="topicButtons">
-				<% @themes.first(5).each do |theme| %>
-					<button class='btn btn-primary'><%= theme.name %></button>
-				<% end %>
+		<div class="btn-group btn-group-justified">
+			<% if @page > 0 %>
+				<%= link_to "&larr; ".html_safe, topics_path(page: @page - 1), class: 'mr-2' %>
+			<% end %>
+			<div class="topicButtons">
+					<% @theme_filters.each do |theme| %>
+						<button class='btn btn-primary'><%= theme.name %></button>
+					<% end %>
+			</div>
+			<% if @display_next %>
+				<%= link_to "&rarr;".html_safe, topics_path(page: @page + 1), class: 'ml-2' %>
+			<% end %> 
 		</div>
-
-			<%= link_to "&rarr;".html_safe, topics_path(page: @page + 1) %>
 	</div>
-</div>
-
-
 
 	<%= button_to 'Add Topic', new_topic_path, remote: true, method: :get, class: 'btn btn-primary btn-block mb-5' %>
+</div>
 
 <div class='modal' id='AddTopicModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
     <div class='modal-dialog'>

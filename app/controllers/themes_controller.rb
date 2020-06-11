@@ -2,7 +2,7 @@ class ThemesController < ApplicationController
     before_action :authenticate_user!
 
     def index
-        @themes = Theme.all
+        @themes = Theme.where(organization_id: [current_user.organization_id, nil]).includes(:topics).load
     end
 
     def new
@@ -11,13 +11,13 @@ class ThemesController < ApplicationController
 
     def show
         @theme = Theme.find_by(id: params[:id])
-        @themes = Theme.all
+        @themes = Theme.where(organization_id: [current_user.organization_id, nil]).includes(:topics).load
     end
 
     def create
         @theme = Theme.new(theme_params)
         if @theme.save
-            flash[:success] = 'Chat room added!'
+            flash[:notice] = 'Theme added!'
             redirect_to root_path
         else
             render 'new'
@@ -39,14 +39,16 @@ class ThemesController < ApplicationController
     end
 
     def destroy
-        @theme = Theme.find(params[:id]).destroy
-        flash[:success] = "User deleted"
+        @theme = Theme.find(params[:id])
+        @theme.topics.destroy_all
+        @theme.destroy
+        flash[:notice] = "Theme deleted"
         redirect_to root_path
     end
 
     private
 
     def theme_params
-        params.require(:theme).permit(:name)
+        params.require(:theme).permit(:name, :organization_id)
     end
 end
