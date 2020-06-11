@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
     def show
-        @message = Message.all.order_by(:body)
+        @message = Message.find(params[:id])
     end
 
     def destroy
