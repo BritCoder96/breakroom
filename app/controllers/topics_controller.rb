@@ -1,8 +1,11 @@
 class TopicsController < ApplicationController
     before_action :authenticate_user!
+    before_action :set_page, only: [:index]
 
+QUESTIONS_PER_PAGE = 5
     def index
         @topics = Topic.all
+        @themes = Theme.all.offset(QUESTIONS_PER_PAGE * @page).limit(QUESTIONS_PER_PAGE)
     end
 
     def new
@@ -50,5 +53,10 @@ class TopicsController < ApplicationController
 
     def topic_params
         params.require(:topic).permit(:title, :description, theme_ids: [])
+    end
+
+    def set_page
+      @page = (params[:page] || 0).to_i
+      puts  @page
     end
 end
