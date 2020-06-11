@@ -5,14 +5,19 @@
 }
 
 .usermodal {
-    background: white;
     border-radius: 5px;
     padding: 20px;
 
     h1 {
         margin: 0;
         padding: 0;
+        text-align: center;
     }
+}
+
+.topicButtons{
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .guestmodal {
@@ -104,4 +109,8 @@
     margin: 0 auto;
     justify-content: space-around;
     margin-top: 100px;
+}
+
+.container {
+    text-align: center;
 }
