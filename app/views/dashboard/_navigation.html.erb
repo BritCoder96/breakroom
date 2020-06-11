@@ -1,6 +1,6 @@
 <div class="list-content">
 	<div class="application-name">
-		Breakroom
+		<%= link_to "Breakroom", root_path %>
 	</div>
 	<div class="channel-tab">
 		<h3>CHANNELS</h3>
@@ -33,10 +33,7 @@
 				<a>ADMIN OPTIONS</a>
 				<div class="admin-options">
 					<br />
-					<br />
 					<%= link_to "Add a theme", new_theme_path %>
-					<br />
-					<%= link_to "Add a topic", new_topic_path %>
 					<br />
 					<%= link_to "View users", admin_index_path %>
 				</div>

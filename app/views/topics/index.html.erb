@@ -3,9 +3,17 @@
 		<br/>
 	</div>
 
-<div class="topicButtons">
-	<button type="button" name="News">News</button>
-	<button type="button" name="Sports">Sports</button>
-	<button type="button" name="TV">TV</button>
-	<button type="button" name="Movies">Movies</button>
+	<div class="topicButtons">
+			<% @themes.first(5).each do |theme| %>
+				<button class='btn btn-primary'><%= theme.name %></button>
+			<% end %>
+	</div>
+
+	<%= button_to 'Add Topic', new_topic_path, remote: true, method: :get, class: 'btn btn-primary btn-block mb-5' %>
+
+<div class='modal' id='AddTopicModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+        </div>
+    </div>
 </div>
