@@ -39,8 +39,10 @@ class ThemesController < ApplicationController
     end
 
     def destroy
-        @theme = Theme.find(params[:id]).destroy
-        flash[:notice] = "User deleted"
+        @theme = Theme.find(params[:id])
+        @theme.topics.destroy_all
+        @theme.destroy
+        flash[:notice] = "Theme deleted"
         redirect_to root_path
     end
 
