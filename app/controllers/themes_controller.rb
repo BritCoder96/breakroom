@@ -17,7 +17,7 @@ class ThemesController < ApplicationController
     def create
         @theme = Theme.new(theme_params)
         if @theme.save
-            flash[:success] = 'Chat room added!'
+            flash[:notice] = 'Theme added!'
             redirect_to root_path
         else
             render 'new'
@@ -40,7 +40,7 @@ class ThemesController < ApplicationController
 
     def destroy
         @theme = Theme.find(params[:id]).destroy
-        flash[:success] = "User deleted"
+        flash[:notice] = "User deleted"
         redirect_to root_path
     end
 

@@ -44,7 +44,7 @@ class TopicsController < ApplicationController
 
     def destroy
         @topic = Topic.find(params[:id]).destroy
-        flash[:success] = "User deleted"
+        flash[:notice] = "User deleted"
         redirect_to root_path
     end
 
