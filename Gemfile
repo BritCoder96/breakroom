@@ -21,8 +21,8 @@ gem 'gemoji', '~> 4.0.0.rc2'
 
 gem 'turbolinks', '~> 5.2.0'
 
-gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '6.x'
-gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '6.x'
+gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: 'master'
+gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: 'master'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
