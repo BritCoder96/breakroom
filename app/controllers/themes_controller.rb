@@ -2,7 +2,7 @@ class ThemesController < ApplicationController
     before_action :authenticate_user!
 
     def index
-        @themes = Theme.all
+        @themes = Theme.where(organization_id: [current_user.organization_id, nil]).includes(:topics).load
     end
 
     def new
@@ -11,7 +11,7 @@ class ThemesController < ApplicationController
 
     def show
         @theme = Theme.find_by(id: params[:id])
-        @themes = Theme.all
+        @themes = Theme.where(organization_id: [current_user.organization_id, nil]).includes(:topics).load
     end
 
     def create
@@ -47,6 +47,6 @@ class ThemesController < ApplicationController
     private
 
     def theme_params
-        params.require(:theme).permit(:name)
+        params.require(:theme).permit(:name, :organization_id)
     end
 end
