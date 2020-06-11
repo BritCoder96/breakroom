@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
     before_action :authenticate_user!
 
     def index
-        @topics = Topic.all
+        @themes = Theme.where(organization_id: [current_user.organization_id, nil]).includes(:topics).load
     end
 
     def new
@@ -12,17 +12,19 @@ class TopicsController < ApplicationController
     def show
         @topic = Topic.includes(:messages).find_by(id: params[:id])
         @message = Message.new
-        @topics = Topic.all
+        @themes = Theme.where(organization_id: [current_user.organization_id, nil]).includes(:topics).load
     end
 
     def create
         @topic = current_user.topics.build(topic_params) unless current_user.blank?
         if @topic.save
-            flash[:success] = 'Chat room added!'
+            flash[:notice] = 'Topic added!'
             redirect_to topics_path
         else
-            flash.now[:error] = @topic.errors.map{|e,m|e.to_s.humanize.to_s + " " + m}
-            render 'new'
+            flash[:error] = @topic.errors.map{|e,m|e.to_s.humanize.to_s + " " + m}
+            respond_to do |format|
+                format.js { render 'topics/create'}
+            end
         end
     end
 
@@ -42,13 +44,13 @@ class TopicsController < ApplicationController
 
     def destroy
         @topic = Topic.find(params[:id]).destroy
-        flash[:success] = "User deleted"
+        flash[:notice] = "User deleted"
         redirect_to root_path
     end
 
     private
 
     def topic_params
-        params.require(:topic).permit(:title, :description, theme_ids: [])
+        params.require(:topic).permit(:title, :description, :theme_id)
     end
 end
