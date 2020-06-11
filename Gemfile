@@ -21,6 +21,9 @@ gem 'gemoji', '~> 4.0.0.rc2'
 
 gem 'turbolinks', '~> 5.2.0'
 
+gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '6.x'
+gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '6.x'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
