@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
     has_many :topics, dependent: :destroy
     has_many :messages, dependent: :destroy
+    belongs_to :organization
 
     validates_uniqueness_of :nickname
     validates :firstname, presence: true, length: {minimum: 2, maximum: 20}

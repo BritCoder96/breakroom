@@ -15,9 +15,11 @@ theme2 = Theme.create(name:"Sports")
 theme3 = Theme.create(name:"TV Shows")
 theme4 = Theme.create(name:"Movies")
 
-scott = User.create(nickname: "sbenson", firstname: "Scott", lastname: "Benson", email:"scott.benson96@gmail.com", password: "password1234", admin: true)
-janna = User.create(nickname: "jpierre", firstname: "Janna", lastname: "Pierre", email:"jannapierre@gmail.com", password: "password1234", admin: true)
-bryan = User.create(nickname: "bbenson", firstname: "Bryan", lastname: "Benson", email:"bryanbenson83@gmail.com", password: "password1234", admin: true)
+breakroom = Organization.create(name: 'BreakRoom', annual_sales_value: 0, industry_type: 'Software')
+
+scott = User.create(nickname: "sbenson", firstname: "Scott", lastname: "Benson", email:"scott.benson96@gmail.com", password: "password1234", admin: true, organization_id: breakroom.id)
+janna = User.create(nickname: "jpierre", firstname: "Janna", lastname: "Pierre", email:"jannapierre@gmail.com", password: "password1234", admin: true, organization_id: breakroom.id)
+bryan = User.create(nickname: "bbenson", firstname: "Bryan", lastname: "Benson", email:"bryanbenson83@gmail.com", password: "password1234", admin: true, organization_id: breakroom.id)
 
 topNews = Topic.create(title:"Top News", description: "Top news.", user: bryan)
 theme1.topics << topNews
