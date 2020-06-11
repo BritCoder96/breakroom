@@ -9,6 +9,12 @@
 			<% end %>
 	</div>
 
+	<div class="moreTopics">
+		<% @themes.drop(5).each do |temp| %>
+		<button class='loadTags'> + </button>
+		<% end %>
+	</div>
+
 	<%= button_to 'Add Topic', new_topic_path, remote: true, method: :get, class: 'btn btn-primary btn-block mb-5' %>
 
 <div class='modal' id='AddTopicModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
