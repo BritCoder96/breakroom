@@ -1,0 +1,28 @@
+<div class="usermodal">
+	<h1>Breakroom</h1>
+	<br/>
+	<div class= "container">
+		<div class="btn-group btn-group-justified">
+			<% if @page > 0 %>
+				<%= link_to "&larr; ".html_safe, conversations_path(page: @page - 1), class: 'mr-2' %>
+			<% end %>
+			<div class="conversationButtons">
+					<% @topic_filters.each do |topic| %>
+						<button class='btn btn-primary'><%= topic.name %></button>
+					<% end %>
+			</div>
+			<% if @display_next %>
+				<%= link_to "&rarr;".html_safe, conversations_path(page: @page + 1), class: 'ml-2' %>
+			<% end %> 
+		</div>
+	</div>
+
+	<%= button_to 'Add Conversation', new_conversation_path, remote: true, method: :get, class: 'btn btn-primary btn-block mb-5' %>
+</div>
+
+<div class='modal' id='AddConversationModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+        </div>
+    </div>
+</div>

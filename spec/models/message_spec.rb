@@ -2,24 +2,24 @@ require 'rails_helper'
 
 RSpec.describe Message, type: :model do
   let(:user) { create :user }
-  let(:topic) { create :topic, user: user }
+  let(:conversation) { create :conversation, user: user }
 
   describe "creating a message" do
     describe "text in body" do
       it "is valid between 2 and 1000 characters" do
-        message = Message.new(body: "Hi there!", user: user, topic: topic )
+        message = Message.new(body: "Hi there!", user: user, conversation: conversation )
         message.valid?
         expect(message.errors).to be_empty
       end
 
       it "is invalid over 1000 characters" do
-        message = Message.new(body: Faker::Lorem.sentence(1001), user: user, topic: topic )
+        message = Message.new(body: Faker::Lorem.sentence(1001), user: user, conversation: conversation )
         message.valid?
         expect(message.errors).to have_key(:body)
       end
 
       it "is invalid below 2 characters" do
-        message = Message.new(body: Faker::Lorem.characters(1), user: user, topic: topic )
+        message = Message.new(body: Faker::Lorem.characters(1), user: user, conversation: conversation )
         message.valid?
         expect(message.errors).to have_key(:body)
       end
@@ -39,17 +39,17 @@ RSpec.describe Message, type: :model do
       end
     end
 
-    describe "containing topic" do
-      it "is valid with topic" do
-        message = Message.new(topic: topic)
+    describe "containing conversation" do
+      it "is valid with conversation" do
+        message = Message.new(conversation: conversation)
         message.valid?
-        expect(message.errors).not_to have_key(:topic)
+        expect(message.errors).not_to have_key(:conversation)
       end
 
-      it "is invalid without topic" do
+      it "is invalid without conversation" do
         message = Message.new()
         message.valid?
-        expect(message.errors).to have_key(:topic)
+        expect(message.errors).to have_key(:conversation)
       end
     end
   end

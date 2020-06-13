@@ -1,9 +1,8 @@
 class Topic < ApplicationRecord
-    belongs_to :user
-    has_many :messages, dependent: :destroy
-    belongs_to :theme
+    validates :name, presence: true, uniqueness: true
+    has_many :conversations
 
-    validates :title, presence: true, length: {minimum: 2, maximum: 20}
-    validates :theme_id, presence: true
-    validates :description, presence: true, length: {minimum: 5, maximum: 50}
+    def to_s
+        self.name
+    end
 end

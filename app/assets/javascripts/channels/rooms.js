@@ -7,8 +7,8 @@ jQuery(document).on('turbolinks:load', function() {
           };
         messages_to_bottom();
         App.global_chat = App.cable.subscriptions.create({
-            channel: "TopicsChannel",
-            topic_id: messages.data('topic-id')
+            channel: "ConversationsChannel",
+            conversation_id: messages.data('conversation-id')
         }, {
             connected: function() {},
             disconnected: function() {},
@@ -16,10 +16,10 @@ jQuery(document).on('turbolinks:load', function() {
               messages.append(data['message']).find(".message:last").slideDown("fast");
               return messages_to_bottom();
             },
-            send_message: function(message, topic_id) {
+            send_message: function(message, conversation_id) {
               return this.perform('send_message', {
                 message: message,
-                topic_id: topic_id
+                conversation_id: conversation_id
               });
             }
         });
@@ -28,7 +28,7 @@ jQuery(document).on('turbolinks:load', function() {
             $this = $(this);
             textarea = $this.find('#message_body');
             if ($.trim(textarea.val()).length > 1) {
-              App.global_chat.send_message(textarea.val(), messages.data('topic-id'));
+              App.global_chat.send_message(textarea.val(), messages.data('conversation-id'));
               textarea.val('');
             }
             e.preventDefault();

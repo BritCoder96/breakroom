@@ -2,15 +2,15 @@ Rails.application.routes.draw do
     devise_for :users, :controllers => {:registrations => "registrations"}
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     resources :dashboard
-    resources :topics
+    resources :conversations
     resources :messages
-    resources :themes
+    resources :topics
     resources :admin
 
-    root 'topics#index'
+    root 'conversations#index'
 
-    get 'topics_controller/index'
-    get '/users', to: 'topics#index'
+    get 'conversations_controller/index'
+    get '/users', to: 'conversations#index'
 
     match 'users/:id' => 'users#edit', :via => :update, :as => :admin_update_user
     match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
