@@ -3,7 +3,7 @@ class MessageBroadcastJob < ApplicationJob
     include EmojiHelper
 
     def perform(message)
-        ActionCable.server.broadcast "topics_#{message.topic.id}_channel",
+        ActionCable.server.broadcast "conversations_#{message.conversation.id}_channel",
                                  message: render_message(message)
     end
 

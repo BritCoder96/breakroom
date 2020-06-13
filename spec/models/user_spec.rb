@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:user) { create :user }
-  let(:topic) { create :topic, user: user }
+  let(:conversation) { create :conversation, user: user }
 
   describe "creating a user" do
     describe "firstname" do

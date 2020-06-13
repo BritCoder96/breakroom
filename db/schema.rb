@@ -15,13 +15,24 @@ ActiveRecord::Schema.define(version: 2020_06_11_200939) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "conversations", id: :serial, force: :cascade do |t|
+    t.string "title"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "description"
+    t.bigint "topic_id"
+    t.index ["topic_id"], name: "index_conversations_on_topic_id"
+    t.index ["user_id"], name: "index_conversations_on_user_id"
+  end
+
   create_table "messages", id: :serial, force: :cascade do |t|
     t.text "body"
     t.integer "user_id"
-    t.integer "topic_id"
+    t.integer "conversation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["topic_id"], name: "index_messages_on_topic_id"
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -31,30 +42,19 @@ ActiveRecord::Schema.define(version: 2020_06_11_200939) do
     t.string "industry_type"
   end
 
-  create_table "themes", id: :serial, force: :cascade do |t|
+  create_table "topics", id: :serial, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "organization_id"
-    t.index ["organization_id"], name: "index_themes_on_organization_id"
+    t.index ["organization_id"], name: "index_topics_on_organization_id"
   end
 
-  create_table "themes_topics", id: :serial, force: :cascade do |t|
+  create_table "topics_conversations", id: :serial, force: :cascade do |t|
+    t.integer "conversation_id"
     t.integer "topic_id"
-    t.integer "theme_id"
-    t.index ["theme_id"], name: "index_themes_topics_on_theme_id"
-    t.index ["topic_id"], name: "index_themes_topics_on_topic_id"
-  end
-
-  create_table "topics", id: :serial, force: :cascade do |t|
-    t.string "title"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "description"
-    t.bigint "theme_id"
-    t.index ["theme_id"], name: "index_topics_on_theme_id"
-    t.index ["user_id"], name: "index_topics_on_user_id"
+    t.index ["conversation_id"], name: "index_topics_conversations_on_conversation_id"
+    t.index ["topic_id"], name: "index_topics_conversations_on_topic_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
@@ -80,9 +80,9 @@ ActiveRecord::Schema.define(version: 2020_06_11_200939) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "messages", "topics"
+  add_foreign_key "conversations", "topics"
+  add_foreign_key "conversations", "users"
+  add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
-  add_foreign_key "themes", "organizations"
-  add_foreign_key "topics", "themes"
-  add_foreign_key "topics", "users"
+  add_foreign_key "topics", "organizations"
 end

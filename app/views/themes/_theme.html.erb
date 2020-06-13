@@ -1,9 +1,0 @@
-<div class="themename">
-	<%= theme.name %>
-	<%= link_to "X" , theme_path(theme), 'data-method' => :delete, :class => "delete", confirm:"Are you sure?" unless !current_user.is_admin? %>
-</div>
-<% theme.topics.each do |room|%>
-	<li>
-		<%= link_to "#{room.title}", topic_path(room) %>
-	</li>
-<% end %>
