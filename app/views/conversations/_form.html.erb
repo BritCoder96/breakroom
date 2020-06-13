@@ -12,6 +12,6 @@
         <%= f.collection_select(:topic_id, Topic.all, :id, :to_s, {prompt: 'Select Topic'}, class: 'form-control')%>
     </div>
 
-    <span><%= f.submit "Add!", class: 'btn btn-primary', remote: true %></span>
+    <span><%= f.submit "Submit!", class: 'btn btn-primary', remote: true %></span>
     <button type='button' class='btn' data-dismiss='modal' aria-hidden='true'>Cancel</button>
 <% end %>

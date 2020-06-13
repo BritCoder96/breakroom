@@ -43,7 +43,10 @@ class ConversationsController < ApplicationController
         if @conversation.update_attributes(conversation_params)
             redirect_to @conversation
         else
-            render 'edit'
+            flash.now[:error] = @conversation.errors.map{|e,m|e.to_s.humanize.to_s + " " + m}
+            respond_to do |format|
+                format.js { render 'conversations/update'}
+            end
         end
     end
 
