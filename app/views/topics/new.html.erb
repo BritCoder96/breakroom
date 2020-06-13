@@ -1,5 +1,5 @@
 <div class="usermodal">
-    <% if current_user && current_user.is_admin? %>
+    <% if current_user%>
         <h1>Add topic</h1>
 
         <%= render 'form' %>

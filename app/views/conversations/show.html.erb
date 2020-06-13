@@ -4,8 +4,8 @@
         <h3><%= @conversation.description %></h3>
     </div>
     <% if current_user.is_admin? %>
-        <h4>Admin Tools: <%= link_to "Delete channel", conversation_path(@conversation.id), 'data-method' => :delete, :class => "delete", :confirm => "Are you sure ?", id: "delete-conversation"%>
-         <%= link_to "Edit channel",   edit_conversation_path(@conversation.id), :confirm => "Are you sure ?"%></h4>
+        <h4>Admin Tools: <%= link_to "Delete Conversation", conversation_path(@conversation.id), 'data-method' => :delete, :class => "delete", :confirm => "Are you sure ?", id: "delete-conversation"%>
+         <%= link_to "Edit Conversation",   edit_conversation_path(@conversation.id), :confirm => "Are you sure ?", remote: true%></h4>
     <% end %>
 
 </header>
@@ -20,4 +20,12 @@
             <%= f.text_field :body, class: 'form-control', placeholder: 'Type your message...' %>
         </div>
     <% end %>
+</div>
+
+
+<div class='modal' id='EditConversationModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+        </div>
+    </div>
 </div>
