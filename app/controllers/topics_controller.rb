@@ -20,6 +20,7 @@ class TopicsController < ApplicationController
             flash[:notice] = 'Topic added!'
             redirect_to root_path
         else
+            flash.now[:error] = @topic.errors.map{|e,m|e.to_s.humanize.to_s + " " + m}
             render 'new'
         end
     end
@@ -34,7 +35,8 @@ class TopicsController < ApplicationController
         if @topic.update_attributes(topic_params)
             redirect_to @topic
         else
-          render 'edit'
+            flash.now[:error] = @topic.errors.map{|e,m|e.to_s.humanize.to_s + " " + m}
+            render 'edit'
         end
     end
 
