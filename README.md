@@ -9,8 +9,8 @@
 This project is still a work-in-progress though. The main functionalities working right now are:
 
 * Creating, maintaining and managing users.
-* Manage the topics
-* Working topics which can be filled with messages.
+* Manage the conversations
+* Working conversations which can be filled with messages.
 * Admin tools to moderate the chat.
 
 Other ideas for this application are:
@@ -36,9 +36,9 @@ There are some tests included (Rspec) but they were just to test some validation
 
 ### How did I create the app?
 1. First of all I started creating a base concept by sketching. I had a time limit of 3 days to make a working concept. It was necessary to start as quick as possible.
-2. After creating the ActionCable connection and the base concept of the topic, I started to make my own grid for the app to make it scalable whatever resolution the user has.
+2. After creating the ActionCable connection and the base concept of the conversation, I started to make my own grid for the app to make it scalable whatever resolution the user has.
 3. Styling is important so I made a standard layout.
-4. After this I started to implement more features to make the topic more usable.
+4. After this I started to implement more features to make the conversation more usable.
 
 
 ### Authors

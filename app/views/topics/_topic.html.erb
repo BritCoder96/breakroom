@@ -1,1 +1,9 @@
-<li><%= link_to "#{topic.title}", topic_path(topic) %></li>
+<div class="topicname">
+	<%= topic.name %>
+	<%= link_to "X" , topic_path(topic), 'data-method' => :delete, :class => "delete", confirm:"Are you sure?" unless !current_user.is_admin? %>
+</div>
+<% topic.conversations.each do |conversation|%>
+	<li>
+		<%= link_to "#{conversation.title}", conversation_path(conversation) %>
+	</li>
+<% end %>
