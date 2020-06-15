@@ -1,9 +1,0 @@
-<div class="usermodal">
-    <% if current_user%>
-        <h1>Add topic</h1>
-
-        <%= render 'form' %>
-    <% else %>
-        <% controller.redirect_to root_path %>
-    <% end %>
-</div>

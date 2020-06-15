@@ -21,7 +21,9 @@ class TopicsController < ApplicationController
             redirect_to root_path
         else
             flash.now[:error] = @topic.errors.map{|e,m|e.to_s.humanize.to_s + " " + m}
-            render 'new'
+            respond_to do |format|
+                format.js {render 'topics/create'}
+            end
         end
     end
 
