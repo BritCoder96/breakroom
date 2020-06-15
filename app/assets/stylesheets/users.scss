@@ -16,8 +16,21 @@
 }
 
 .conversationButtons{
-  text-align: center;
-  margin-bottom: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.conversation-cards {
+    text-align: center;
+    margin: 0 auto;
+    overflow: auto;
+
+    a {
+        display: inline;
+        font-size: 12px;
+        font-weight: bold;
+        text-decoration: none;
+    }
 }
 
 .guestmodal {
