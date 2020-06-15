@@ -1,6 +1,5 @@
 class TopicsController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_page, only: [:index]
 
     def index
         @topics = Topic.where(organization_id: [current_user.organization_id, nil]).includes(:conversations).load
@@ -23,7 +22,7 @@ class TopicsController < ApplicationController
         else
             flash.now[:error] = @topic.errors.map{|e,m|e.to_s.humanize.to_s + " " + m}
             respond_to do |format|
-              format.js {render 'topics/new'}
+              format.js {render 'topics/create'}
             end
         end
     end

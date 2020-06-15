@@ -14,7 +14,7 @@
 			<% if @display_next %>
 				<%= link_to "&rarr;".html_safe, conversations_path(page: @page + 1), class: 'ml-2' %>
 			<% end %>
-			<%= button_to '+', new_topic_path, method: :get, class: 'btn btn-success btn-block ml-2' %>
+			<%= button_to '+', new_topic_path, remote: true, method: :get, class: 'btn btn-success btn-block ml-2' %>
 		</div>
 	</div>
 
@@ -22,6 +22,13 @@
 </div>
 
 <div class='modal' id='AddConversationModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+        </div>
+    </div>
+</div>
+
+<div class='modal' id='AddTopicModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
     <div class='modal-dialog'>
         <div class='modal-content'>
         </div>
