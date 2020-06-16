@@ -1,7 +1,7 @@
 <div class="usermodal">
 	<h1>Breakroom</h1>
 	<br/>
-	<div class= "container">
+	<div class="container">
 		<div class="btn-group btn-group-justified">
 			<% if @page > 0 %>
 				<%= link_to "&larr; ".html_safe, conversations_path(page: @page - 1), class: 'mr-2' %>
@@ -18,7 +18,19 @@
 		</div>
 	</div>
 
-	<%= button_to 'Add Conversation', new_conversation_path, remote: true, method: :get, class: 'btn btn-primary btn-block mb-5' %>
+	<%= button_to 'Add Conversation', new_conversation_path, remote: true, method: :get, class: 'btn btn-primary btn-block mb-3' %>
+</div>
+
+<div class='conversation-cards overflow-auto'>
+	<% @conversations.each do |conversation| %>
+		<%= link_to conversation_path(conversation), method: :get do %>
+			<div class="card mx-auto mb-2 shadow-sm p-3 bg-white rounded" style="width: 50%;">
+			    <div class="card-body">
+			        <h5 class="card-title"><%= conversation.title %></h5>
+			    </div>
+			</div>
+		<% end %>
+	<% end %>
 </div>
 
 <div class='modal' id='AddConversationModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
