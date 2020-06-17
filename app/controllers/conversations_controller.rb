@@ -4,10 +4,10 @@ class ConversationsController < ApplicationController
     QUESTIONS_PER_PAGE = 10
 
     def index
-        @conversations = Conversation.all
-        all_topics = Topic.where(organization_id: [current_user.organization_id, nil]).includes(:conversations)
-        @display_next = all_topics.count > QUESTIONS_PER_PAGE * (@page + 1)
-        @topic_filters = all_topics.offset(QUESTIONS_PER_PAGE * @page).limit(QUESTIONS_PER_PAGE).load
+        @conversations_page = (params[:conversations_page] || 0).to_i
+        @display_next = @all_topics.count > QUESTIONS_PER_PAGE * (@page + 1)
+        @topic_filters = @all_topics.offset(QUESTIONS_PER_PAGE * @page).limit(QUESTIONS_PER_PAGE).load
+        @conversations = Conversation.where(topic_id: session[:topic_ids]).order(created_at: 'desc')
     end
 
     def new
@@ -64,5 +64,21 @@ class ConversationsController < ApplicationController
 
     def set_page
         @page = (params[:page] || 0).to_i
+        @all_topics = Topic.where(organization_id: [current_user.organization_id, nil])
+        topic_ids = @all_topics.map(&:id)
+        topic_id = params[:topic_id].to_i
+        if params[:topic_id].present?
+            if params[:topic_id] == 'all'
+                session[:topic_ids] = topic_ids
+            elsif @all_topics.count == session[:topic_ids].count
+                session[:topic_ids] = [topic_id]
+            elsif session[:topic_ids].include?(topic_id)
+                session[:topic_ids] = session[:topic_ids] - [topic_id]
+            else
+                session[:topic_ids] << topic_id
+            end
+        elsif session[:topic_ids].blank?
+            session[:topic_ids] = topic_ids
+        end
     end
 end
