@@ -1,0 +1,9 @@
+<% @conversations.each do |conversation| %>
+	<%= link_to conversation_path(conversation), method: :get do %>
+		<div class="card mx-auto mb-2 shadow-sm p-3 bg-white rounded" style="width: 50%;">
+		    <div class="card-body">
+		        <h5 class="card-title"><%= conversation.title %></h5>
+		    </div>
+		</div>
+	<% end %>
+<% end %>
