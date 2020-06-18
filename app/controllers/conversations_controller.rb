@@ -1,12 +1,12 @@
 class ConversationsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_page, only: [:index]
-    QUESTIONS_PER_PAGE = 10
+    TOPICS_PER_PAGE = 10
 
     def index
         @conversations_page = (params[:conversations_page] || 0).to_i
-        @display_next = @all_topics.count > QUESTIONS_PER_PAGE * (@page + 1)
-        @topic_filters = @all_topics.offset(QUESTIONS_PER_PAGE * @page).limit(QUESTIONS_PER_PAGE).load
+        @display_next = @all_topics.count > TOPICS_PER_PAGE * (@page + 1)
+        @topic_filters = @all_topics.offset(TOPICS_PER_PAGE * @page).limit(TOPICS_PER_PAGE).load
         @conversations = Conversation.where(topic_id: session[:topic_ids]).order(created_at: 'desc')
     end
 
