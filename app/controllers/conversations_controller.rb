@@ -56,6 +56,15 @@ class ConversationsController < ApplicationController
         redirect_to root_path
     end
 
+    def infinite_scrolling
+        @conversation = conversation.paginate(page:params[:page],
+        per_page: 10).order('created_at DESC')
+        respond_to do |format|
+          format.html
+          format.js
+        end
+    end
+
     private
 
     def conversation_params

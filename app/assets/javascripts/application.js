@@ -14,7 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require cable
-//= require_tree .
+//= require_tree
+//= require bootstrap.
 
 $( document ).on('turbolinks:load', function() {
     $('.assignChannel').prepend('# ');
