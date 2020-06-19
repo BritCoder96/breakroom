@@ -24,6 +24,11 @@ gem 'turbolinks', '~> 5.2.0'
 gem 'elasticsearch-model', '~> 7.1.0'
 gem 'elasticsearch-rails', '~> 7.1.0'
 
+gem 'will_paginate', '~> 3.0.5'
+gem 'betterlorem', '~> 0.1.2'
+gem 'bootstrap-sass', '~> 3.0.3.0'
+gem 'bootstrap-will_paginate', '~> 0.0.10'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
