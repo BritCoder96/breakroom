@@ -1,2 +1,8 @@
-$("#conversations-feed").html('<%= j render partial: "conversations" %>');
 $("#topic-filters").html('<%= j render partial: "topic_filters" %>');
+$('#conversations-feed').append('<%= j render @conversations %>');
+<% if @conversations.next_page %>
+    $('.pagination').replaceWith('<%= j will_paginate @conversations %>');
+<% else %>
+    $(window).off('scroll');
+    $('.pagination').remove();
+<% end %>
