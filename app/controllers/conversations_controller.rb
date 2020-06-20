@@ -2,13 +2,14 @@ class ConversationsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_page, only: [:index]
     TOPICS_PER_PAGE = 10
+    CONVERSATIONS_PER_PAGE = 5
 
     def index
         @conversations_page = (params[:conversations_page] || 0).to_i
         @display_next = @all_topics.count > TOPICS_PER_PAGE * (@page + 1)
         @topic_filters = @all_topics.offset(TOPICS_PER_PAGE * @page).limit(TOPICS_PER_PAGE).load
-        @conversations = Conversation::PER_PAGE(topic_id: session[:topic_ids]).paginate(page: params[:page],
-        per_page: 5).order('created_at DESC')
+        @conversations = Conversation.where(topic_id: session[:topic_ids]).paginate(page: params[:page],
+        per_page: CONVERSATIONS_PER_PAGE).order('created_at DESC')
     end
 
     def new

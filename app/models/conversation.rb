@@ -7,7 +7,6 @@ class Conversation < ApplicationRecord
     validates :topic_id, presence: true
     validates :description, presence: true, length: {minimum: 5, maximum: 50}
 
-    self.(PER_PAGE = 5)
     def timestamp
         created_at.strftime('%d %B %Y %H:%M:%S')
     end
