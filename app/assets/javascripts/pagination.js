@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', function() {
             var more_conversations_url;
             more_conversations_url = $('.pagination .next_page').attr('href');
             if (more_conversations_url && $(window).scrollTop() > $(document).height() - $(window).height() - 60) {
-                $('.pagination').html('<img src="/assets/ajax-loader.gif" alt="Loading..." title="Loading..." />');
+                // $('.pagination').html('<img src="/ajax-loader.gif" alt="Loading..." title="Loading..." />');
                 $.getScript(more_conversations_url);
             }
         });

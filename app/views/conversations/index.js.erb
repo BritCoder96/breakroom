@@ -1,6 +1,5 @@
 $("#topic-filters").html('<%= j render partial: "topic_filters" %>');
 $('#conversations-feed').append('<%= j render @conversations %>');
-console.log(<% @conversations.next_page %>)
 <% if @conversations.next_page %>
     $('.pagination').replaceWith('<%= j will_paginate @conversations %>');
 <% else %>
