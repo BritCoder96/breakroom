@@ -4,7 +4,8 @@
           <h2 class="card-title"><%= conversation.title %></h2>
           <h4 class="card-subtitle"><%= conversation.topic.name %></h4>
           <p><%= conversation.description %></p>
-          <p><%= conversation.messages.count %> comments</p>
+          <% message_count = conversation.messages.count %>
+          <p><%= "#{message_count.to_s} #{message_count > 1  || message_count == 0 ? 'comments' : 'comment'}" %></p>
       </div>
   </div>
 <% end %>
