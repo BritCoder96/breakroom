@@ -25,8 +25,6 @@ gem 'elasticsearch-model', '~> 7.1.0'
 gem 'elasticsearch-rails', '~> 7.1.0'
 
 gem 'will_paginate', '~> 3.3.0'
-
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
