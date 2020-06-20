@@ -1,9 +1,9 @@
-$("#conversations-feed").html('<%= j render partial: "conversations" %>');
 $("#topic-filters").html('<%= j render partial: "topic_filters" %>');
-$('#my-posts').append('<%= j render @posts %>');
-<% if @posts.next_page %>
-  $('.pagination').replaceWith('<%= j will_paginate @posts %>');
+$('#conversations-feed').append('<%= j render @conversations %>');
+console.log(<% @conversations.next_page %>)
+<% if @conversations.next_page %>
+    $('.pagination').replaceWith('<%= j will_paginate @conversations %>');
 <% else %>
-  $(window).off('scroll');
-  $('.pagination').remove();
+    $(window).off('scroll');
+    $('.pagination').remove();
 <% end %>

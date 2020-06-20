@@ -7,7 +7,8 @@ class ConversationsController < ApplicationController
         @conversations_page = (params[:conversations_page] || 0).to_i
         @display_next = @all_topics.count > TOPICS_PER_PAGE * (@page + 1)
         @topic_filters = @all_topics.offset(TOPICS_PER_PAGE * @page).limit(TOPICS_PER_PAGE).load
-        @conversations = Conversation.where(topic_id: session[:topic_ids]).order(created_at: 'desc')
+        @conversations = Conversation.where(topic_id: session[:topic_ids]).paginate(page:params[:page],
+        per_page: 10).order('created_at DESC')
     end
 
     def new
@@ -57,8 +58,7 @@ class ConversationsController < ApplicationController
     end
 
     def infinite_scrolling
-        @conversation = Conversation.paginate(page:params[:page],
-        per_page: 10).order('created_at DESC')
+        @conversation = Conversation
         respond_to do |format|
           format.html
           format.js

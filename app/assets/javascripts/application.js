@@ -14,11 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require cable
-//= require_tree
-//= require bootstrap
-.
+//= require_tree .
 
-$( document ).on('turbolinks:load', function() {
+$(document).on('turbolinks:load', function() {
     $('.assignChannel').prepend('# ');
     $('.channel-tab ul li').prepend('# ');
     $('.admin-submenu').hide();

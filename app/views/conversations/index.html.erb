@@ -20,11 +20,11 @@
 </div>
 
 <div class='conversation-cards overflow-auto' id='conversations-feed'>
-	<%= render 'conversations' %>
+	<%= render @conversations %>
 </div>
 
-<div class='infinite_scrolling'>
-	<%= will_paginate @conversation if @conversation.present? %>
+<div id='infinite-scrolling'>
+	<%= will_paginate %>
 </div>
 
 <div class='modal' id='AddConversationModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
