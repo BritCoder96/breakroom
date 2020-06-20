@@ -15,7 +15,8 @@
 //= require turbolinks
 //= require cable
 //= require_tree
-//= require bootstrap.
+//= require bootstrap
+.
 
 $( document ).on('turbolinks:load', function() {
     $('.assignChannel').prepend('# ');
