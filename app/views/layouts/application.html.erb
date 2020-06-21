@@ -10,9 +10,6 @@
 
     <body>
         <div class="flexbox">
-            <% if current_user %>
-                <%= render 'dashboard/navigation' %>
-            <% end %>
             <div class="page-content">
                 <%= yield %>
                 <div class="popup">
@@ -20,7 +17,7 @@
                 </div>
             </div>
         </div>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'%>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous" defer></script>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'%>
     </body>
 </html>
