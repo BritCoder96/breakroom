@@ -23,7 +23,11 @@
 </div>
 
 <div class='conversation-cards overflow-auto' data-page="<%= @conversations_page %>" id='conversations-feed'>
-	<%= render @conversations %>
+	<% if  @conversations.count > 0 %>
+	    <%= render @conversations %>
+	<% else %>
+	   <h5>You've unselected all topics. Hit "All" or choose a topic to see conversations.</h5>
+	<% end %>
 </div>
 
 <div id='infinite-scrolling'></div>

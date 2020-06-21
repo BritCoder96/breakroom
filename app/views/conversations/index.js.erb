@@ -1,6 +1,10 @@
+$("#topic-filters").html('<%= j render partial: "topic_filters" %>');
 <% if params[:topic_id].present? %>
-	$("#topic-filters").html('<%= j render partial: "topic_filters" %>');
-	$('#conversations-feed').html('<%= j render @conversations %>');
+	<% if @conversations.count > 0 %>
+		$('#conversations-feed').html('<%= j render @conversations %>');
+	<% else %>
+		$('#conversations-feed').html('<h5>You\'ve unselected all topics. Hit "All" or choose a topic to see conversations.</h5>');
+	<% end %>
 	$('#conversations-feed').data('page', <%= 0 %>);
 <% elsif @conversations.count > 0 && params[:conversation_page].present? %>
 	$('#conversations-feed').data('page', <%= params[:conversation_page] %>);
