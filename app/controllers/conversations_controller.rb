@@ -5,11 +5,9 @@ class ConversationsController < ApplicationController
     CONVERSATIONS_PER_PAGE = 5
 
     def index
-        @conversations_page = (params[:conversations_page] || 0).to_i
         @display_next = @all_topics.count > TOPICS_PER_PAGE * (@page + 1)
         @topic_filters = @all_topics.offset(TOPICS_PER_PAGE * @page).limit(TOPICS_PER_PAGE).load
-        @conversations = Conversation.where(topic_id: session[:topic_ids]).paginate(page: params[:page],
-        per_page: CONVERSATIONS_PER_PAGE).order('created_at DESC')
+        @conversations = Conversation.where(topic_id: session[:topic_ids]).order('created_at DESC').offset(CONVERSATIONS_PER_PAGE * @conversation_page).limit(CONVERSATIONS_PER_PAGE).load
     end
 
     def new
@@ -66,6 +64,7 @@ class ConversationsController < ApplicationController
 
     def set_page
         @page = (params[:topics_page] || 0).to_i
+        @conversation_page = (params[:conversation_page] || 0).to_i
         @all_topics = Topic.where(organization_id: [current_user.organization_id, nil])
         topic_ids = @all_topics.map(&:id)
         topic_id = params[:topic_id].to_i

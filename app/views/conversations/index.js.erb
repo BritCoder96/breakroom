@@ -1,7 +1,10 @@
 $("#topic-filters").html('<%= j render partial: "topic_filters" %>');
-$('#conversations-feed').append('<%= j render @conversations %>');
-<% if @conversations.next_page %>
-    $('.pagination').replaceWith('<%= j will_paginate @conversations %>');
+<% if params[:topic_id].present? %>
+	$('#conversations-feed').html('<%= j render @conversations %>');
+<% end %>
+<% if @conversations.count > 0 && params[:conversation_page].present? %>
+	$('#conversations-feed').data('page', <%= params[:conversation_page] %>);
+    $('#conversations-feed').append('<%= j render @conversations %>');
 <% else %>
     $(window).off('scroll');
     $('.pagination').remove();

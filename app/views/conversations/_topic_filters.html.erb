@@ -1,4 +1,4 @@
-<%= link_to 'All', conversations_path(page: @page, topic_id: 'all'), remote: true, method: :get, class: "btn #{session[:topic_ids].count == @all_topics.count ? "btn-success" : "btn-primary"}" %>
+<%= link_to 'All', conversations_path(page: @page, topic_id: 'all'), method: :get, class: "btn #{session[:topic_ids].count == @all_topics.count ? "btn-success" : "btn-primary"}" %>
 <% @topic_filters.each do |topic| %>
-	<%= link_to topic.name, conversations_path(page: @page, topic_id: topic.id), remote: true, method: :get, class: "btn #{session[:topic_ids].include?(topic.id) && session[:topic_ids].count != @all_topics.count ? "btn-success" : "btn-primary"}" %>
+	<%= link_to topic.name, conversations_path(page: @page, topic_id: topic.id), method: :get, class: "btn #{session[:topic_ids].include?(topic.id) && session[:topic_ids].count != @all_topics.count ? "btn-dark" : "btn-light"}" %>
 <% end %>
