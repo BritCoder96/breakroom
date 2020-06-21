@@ -1,5 +1,7 @@
 <div class="usermodal">
-	<h1>Breakroom</h1>
+	<div class="application-name">
+		<h1><%= link_to "Breakroom", root_path %></h1>
+	</div>
 	<br/>
 	<div class="container">
 		<div class="btn-group btn-group-justified">
@@ -15,11 +17,12 @@
 			<%= button_to '+', new_topic_path, remote: true, method: :get, class: 'btn btn-success btn-block ml-2' %>
 		</div>
 	</div>
-
-	<%= button_to 'Add Conversation', new_conversation_path, remote: true, method: :get, class: 'btn btn-primary btn-block mb-3' %>
+</div>
+<div class='new-conversation-btn-box'>
+	<%= button_to 'Add Conversation', new_conversation_path, remote: true, method: :get, class: 'btn btn-primary mb-3 new-conversation-btn' %>
 </div>
 
-<div class='conversation-cards overflow-auto' data-page="<%= @conversation_page %>" id='conversations-feed'>
+<div class='conversation-cards overflow-auto' data-page="<%= @conversations_page %>" id='conversations-feed'>
 	<%= render @conversations %>
 </div>
 

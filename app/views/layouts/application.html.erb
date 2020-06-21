@@ -10,9 +10,6 @@
 
     <body>
         <div class="flexbox">
-            <% if current_user %>
-                <%= render 'dashboard/navigation' %>
-            <% end %>
             <div class="page-content">
                 <%= yield %>
                 <div class="popup">
