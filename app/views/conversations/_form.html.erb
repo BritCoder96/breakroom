@@ -6,7 +6,7 @@
     </div>
     <div class='form-group'>
         <%= f.label :description %>
-        <%= f.text_field :description, autofocus: true, class: 'form-control', id: "conversation_description" %>
+        <%= f.text_area :description, autofocus: true, class: 'form-control', id: "conversation_description" %>
     </div>
     <div class="form-group">
         <%= f.collection_select(:topic_id, Topic.all, :id, :to_s, {prompt: 'Select Topic'}, class: 'form-control')%>
