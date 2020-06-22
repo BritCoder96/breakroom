@@ -8,6 +8,6 @@ class Conversation < ApplicationRecord
     validates :description, presence: true, length: {minimum: 5, maximum: 100}
 
     def timestamp
-        created_at.strftime('%d %B %Y %H:%M:%S')
+        created_at.strftime('%b %d at %I:%M %p')
     end
 end
