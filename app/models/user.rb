@@ -14,7 +14,7 @@ class User < ApplicationRecord
     validates :email, presence: true, length: {minimum: 2, maximum: 40}
 
     def name
-        nickname
+        "#{self.firstname} #{lastname}"
     end
 
     def is_admin?
