@@ -59,7 +59,7 @@ class ConversationsController < ApplicationController
     private
 
     def conversation_params
-        params.require(:conversation).permit(:title, :description, :topic_id)
+        params.require(:conversation).permit(:title, :description, :topic_id, :url)
     end
 
     def set_page
