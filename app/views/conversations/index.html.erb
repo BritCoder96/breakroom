@@ -20,7 +20,7 @@
 	</div>
 </div>
 <div class='new-conversation-btn-box'>
-	<%= button_to 'Add Conversation', new_conversation_path, remote: true, method: :get, class: 'btn btn-primary mb-3 new-conversation-btn' %>
+	<%= button_to 'Start a Conversation', new_conversation_path, remote: true, method: :get, class: 'mb-3 new-conversation-btn' %>
 </div>
 
 <div class='conversation-cards overflow-auto' data-page="<%= @conversations_page %>" id='conversations-feed'>
