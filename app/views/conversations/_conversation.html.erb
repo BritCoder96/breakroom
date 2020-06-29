@@ -3,8 +3,8 @@
       <div class="card-body">
           <h2 class="card-title"><%= conversation.title %></h2>
           <h4 class="card-subtitle"><%= conversation.topic.name %></h4>
-          <p class="hint"><%= gravatar_for(conversation.user, {class: 'gravatar-img'}) %> <%= conversation.user.name %> <%= conversation.timestamp %></p>
-          <a href="<%= conversation.url %>" target="_blank">URL</a>
+          <p class="hint"><%= gravatar_for(conversation.user, {class: 'gravatar-img'}) %> <%= conversation.user.name %> <span class='conversation-timestamp'><%= conversation.timestamp %></span></p>
+          <% if conversation.url.present? %><a href="<%= conversation.url %>" target="_blank">URL</a><% end %>
           <p><%= conversation.description %></p>
           <% message_count = conversation.messages.count %>
           <p><% User.where(id: conversation.messages.group(:id, :user_id).last(5).pluck(:user_id)).each do |user| %>
