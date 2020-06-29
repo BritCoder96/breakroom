@@ -3,7 +3,7 @@
         <h1 style='font-weight: bold; margin-right: 2em;'><%= link_to "Breakroom", root_path %></h1>
         <h1 class="assignChannel"><%= @conversation.title %></h1>&nbsp;~&nbsp;
         <h3><%= @conversation.description %></h3>
-        <% if conversation.url.present? %><a href="<%= @conversation.url %>" target="_blank">URL</a><% end %>
+        <a href="<%= @conversation.url %>" target="_blank">URL</a>
     </div>
     <% if current_user.is_admin? %>
         <h4>Admin Tools: <%= link_to "Delete Conversation", conversation_path(@conversation.id), 'data-method' => :delete, :class => "delete", :confirm => "Are you sure ?", id: "delete-conversation"%>
