@@ -10,6 +10,7 @@ gem 'puma', '~> 4.3'
 gem 'sass-rails', '~> 6.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 4.2.0'
+gem 'webpacker', '~> 5.x'
 
 gem 'devise'
 
