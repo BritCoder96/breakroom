@@ -13,8 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap/dist/js/bootstrap.min
-//= require moment/dist/moment
 //= require cable
 //= require_tree .
 
