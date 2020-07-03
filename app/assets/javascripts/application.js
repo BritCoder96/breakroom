@@ -17,10 +17,7 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
-    $('.assignChannel').prepend('# ');
-    $('.channel-tab ul li').prepend('# ');
     $('.admin-submenu').hide();
-
 
     $('.admin-tab').click(function(){
         if($(this).hasClass('admin-active')) {

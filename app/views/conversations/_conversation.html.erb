@@ -1,14 +1,13 @@
-<div class="card mx-auto mb-2 shadow-sm p-3 bg-white rounded" style="width: 100%;">
-    <div class="card-body text-left">
-        <a href="<%= conversations_path(page: @page, topic_id: conversation.topic_id, single_topic: true) %>" data-remote=true class="btn btn-dark left"><%= conversation.topic.name %></a>
-        <%= link_to conversation_path(conversation), method: :get do %>
+    <div class="card mx-auto mb-2 shadow-sm p-3 bg-white rounded" style="width: 100%;">
+        <div class="card-body text-left">
+            <a href="<%= conversations_path(page: @page, topic_id: conversation.topic_id, single_topic: true) %>" data-remote=true class="btn btn-dark left above-card"><%= conversation.topic.name %></a>
             <h2 class="card-title"><%= conversation.title %></h2>
             <p class="hint"><%= gravatar_for(conversation.user, {class: 'gravatar-img'}) %> <%= conversation.user.name %> <span class='conversation-timestamp'><%= conversation.timestamp %></span></p>
-            <% if conversation.url.present? %><a href="<%= conversation.url %>" target="_blank"><%= conversation.url.truncate(30) %></a><% end %>
+            <% if conversation.url.present? %><a href="<%= conversation.url %>" target="_blank" class='above-card'><%= conversation.url.truncate(30) %></a><% end %>
             <p><%= conversation.description %></p>
             <% message_count = conversation.messages.count %>
             <p><% User.where(id: conversation.messages.group(:id, :user_id).last(5).pluck(:user_id)).each do |user| %>
             <%= gravatar_for(user, {size: 25, class: 'message-gravatar'}).html_safe %><% end %> <%= "#{message_count.to_s} #{message_count > 1  || message_count == 0 ? 'comments' : 'comment'}" %></p>
-        <% end %>
+            <a href="<%= conversation_path(conversation) %>" class='stretched-link'></a>
+        </div>
     </div>
-</div>
