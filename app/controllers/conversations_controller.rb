@@ -71,7 +71,7 @@ class ConversationsController < ApplicationController
         if params[:topic_id].present?
             if params[:topic_id] == 'all'
                 session[:topic_ids] = topic_ids
-            elsif @all_topics.count == session[:topic_ids].count
+            elsif @all_topics.count == session[:topic_ids].count || params[:single_topic].present?
                 session[:topic_ids] = [topic_id]
             elsif session[:topic_ids].include?(topic_id)
                 session[:topic_ids] = session[:topic_ids] - [topic_id]
